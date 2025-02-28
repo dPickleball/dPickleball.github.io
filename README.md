@@ -1,1 +1,1 @@
-# dPickleBall Tournament
+# Digital PickleBall Tournament
