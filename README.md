@@ -1,3 +1,3 @@
 # Digital PickleBall Tournament
 
-[dPickleball.github.io](dPickleball.github.io)
+[dPickleball.github.io](https://dPickleball.github.io)
