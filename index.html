@@ -1,117 +1,553 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Digital Pickleball Tournament - Where Champions Play. Where Tech Dominates.">
+    <meta name="author" content="dPickleball">
 
     <meta property="og:title" content="dPickleball">
-    <meta property="og:description" content="Digital Pickleball Tournament">
-    <!-- <meta property="og:image" content="https://yourwebsite.com/path-to-logo.jpg"> -->
-    <!-- <meta property="og:url" content="https://dsaie.github.io"> -->
-    <!-- <meta property="og:type" content="website"> -->
+    <meta property="og:description" content="Digital Pickleball Tournament - AI, HCI, and BCI Competition">
+    <meta property="og:type" content="website">
 
-    <title>dPickleball</title>
+    <title>dPickleball | Digital Pickleball Tournament</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e88e5;
+            --primary-dark: #1565c0;
+            --secondary: #00bcd4;
+            --dark: #212121;
+            --light: #f5f5f5;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --danger: #f44336;
+            --gray: #757575;
+            --light-gray: #eceff1;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .section-heading {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-heading:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 25%;
+        }
+        
+        .section-subheading {
+            color: var(--gray);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            background-color: rgba(33, 33, 33, 0.95);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar.navbar-shrink {
+            padding: 0.5rem 0;
+        }
+        
+        .navbar-brand {
+            color: var(--light) !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .navbar-nav .nav-link {
+            color: var(--light) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link:focus {
+            color: var(--secondary) !important;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0.25rem 0.75rem;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        /* Header/Hero Section */
+        header {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('img/header-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--light);
+            position: relative;
+        }
+        
+        .intro-text {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .intro-lead-in {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+        
+        .intro-lead-in b {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .btn-xl {
+            background-color: var(--primary);
+            border: none;
+            color: var(--light);
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-xl:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* About Section */
+        #about {
+            padding: 6rem 0;
+        }
+        
+        .service-card {
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+        }
+        
+        .service-heading {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        /* Timeline Section */
+        #timeline {
+            padding: 6rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            margin-left: -2px;
+            background-color: var(--light);
+        }
+        
+        .timeline > li {
+            position: relative;
+            margin-bottom: 3rem;
+            min-height: 200px;
+        }
+        
+        .timeline > li:before,
+        .timeline > li:after {
+            content: ' ';
+            display: table;
+        }
+        
+        .timeline > li:after {
+            clear: both;
+        }
+        
+        .timeline > li .timeline-panel {
+            float: left;
+            position: relative;
+            width: 46%;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline > li .timeline-panel:hover {
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline > li.timeline-inverted > .timeline-panel {
+            float: right;
+        }
+        
+        .timeline > li .timeline-image {
+            position: absolute;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            margin-left: -50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 2;
+        }
+        
+        .timeline > li.timeline-inverted .timeline-image {
+            background-color: var(--secondary);
+        }
+        
+        .timeline > li .timeline-image h4 {
+            margin: 0;
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+        
+        .timeline-heading h4 {
+            margin-top: 0;
+            color: var(--dark);
+        }
+        
+        .timeline-heading h4.subheading {
+            text-transform: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .timeline-body > p,
+        .timeline-body > ul {
+            margin-bottom: 0;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            background-color: var(--dark);
+            color: var(--light);
+            text-align: center;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            line-height: 40px;
+            text-transform: none;
+        }
+        
+        .social-buttons {
+            margin-bottom: 0;
+        }
+        
+        .social-buttons li a {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            line-height: 40px;
+            color: white;
+            background-color: var(--gray);
+            transition: all 0.3s ease;
+        }
+        
+        .social-buttons li a:hover {
+            background-color: var(--primary);
+            transform: scale(1.1);
+        }
 
-    <!-- Custom CSS -->
-    <link href="css/agency.css" rel="stylesheet">
+        /* Committee Section Styling */
+        .committee-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+            text-align: center;
+        }
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+        .committee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="https://kit.fontawesome.com/2d9d8fd555.js" crossorigin="anonymous"></script>
+        .committee-img-container {
+            margin-bottom: 1.5rem;
+        }
 
+        .committee-img-placeholder {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            margin: 0 auto;
+            font-size: 3rem;
+        }
+
+        .committee-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .committee-title {
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Sponsor Section Styling */
+        .sponsor-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid var(--light-gray);
+        }
+
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .sponsor-img-container {
+            margin-bottom: 1rem;
+        }
+
+        .sponsor-img-placeholder {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 50%;
+            margin: 0 auto;
+            font-size: 2.5rem;
+        }
+
+        .sponsor-card.platinum .sponsor-img-placeholder {
+            background: linear-gradient(135deg, #e5e4e2, #afb1b3);
+        }
+
+        .sponsor-card.gold .sponsor-img-placeholder {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+        }
+
+        .sponsor-card.academic .sponsor-img-placeholder {
+            background: linear-gradient(135deg, var(--primary), #002855);
+        }
+
+        .sponsor-card.media .sponsor-img-placeholder {
+            background: linear-gradient(135deg, #6a0dad, #9370DB);
+        }
+
+        .sponsor-info h4, .sponsor-info h5 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .sponsor-card.platinum {
+            border-top: 5px solid #afb1b3;
+        }
+
+        .sponsor-card.gold {
+            border-top: 5px solid #FFD700;
+        }
+
+        .sponsor-card.academic {
+            border-top: 5px solid var(--primary);
+        }
+
+        .sponsor-card.media {
+            border-top: 5px solid #6a0dad;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .center-div {
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+        /* Responsive Adjustments */
+        @media (max-width: 991px) {
+            .timeline > li .timeline-panel {
+                width: 40%;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .timeline:before {
+                left: 40px;
+            }
+            
+            .timeline > li .timeline-panel {
+                width: calc(100% - 90px);
+                float: right;
+            }
+            
+            .timeline > li .timeline-image {
+                left: 40px;
+                margin-left: 0;
+                width: 80px;
+                height: 80px;
+            }
+            
+            .timeline > li.timeline-inverted > .timeline-panel {
+                float: right;
+            }
+            
+            .section-heading {
+                font-size: 2rem;
+            }
+            
+            .intro-lead-in {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 
-<body id="page-top" class="index">
-
+<body id="page-top">
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">dPickleball</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
+            <a class="navbar-brand" href="#page-top">dPickleball</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#timeline">Timeline</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#timeline">Timeline</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rule">Rules</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#rule">Rules</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#committee">Committees</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#committee">Committees</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sponsor">Sponsors</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#sponsor">Sponsors</a>
-                    </li>
-                    
-                    <!-- <li>
-                        <a class="page-scroll" href="#team">Team</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li> -->
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
     </nav>
 
     <!-- Header -->
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in"><b>Digital Pickleball Tournament</b>
+                <div class="intro-lead-in">
+                    <b style="font-size: 3rem">Digital Pickleball Tournament</b>
                     <br>Where Champions Play. 
                     <br>Where Tech Dominates.
-                    <br><b>dPickleball</b>
-                    
                 </div>
-                <!-- <div class="intro-heading">ePickleChamp</div> -->
-                <a href="#about" class="page-scroll btn btn-xl">Tell Me More</a>
+                <a href="#about" class="btn btn-xl">Tell Me More</a>
                 <div class="intro-lead-in">
                     <br>🔥Rise to be the National Champion in AI, HCI, and BCI🔥
                 </div>
-
             </div>
         </div>
     </header>
 
-    <!-- Services Section -->
+    <!-- About Section -->
     <section id="about">
         <div class="container">
             <div class="row">
@@ -120,151 +556,131 @@
                     <h3 class="section-subheading text-muted">dPickleball empowers university and college students from Malaysia to embrace problem-solving, compete for excellence, and ignite their passion for programming, AI, data science, and biomedical innovation through technology-driven competition. We connect bright minds and cultivate the next generation of tech talent, shaping the future of innovation-all while competing for a prestigious championship trophy and a total cash prize of up to RM10,000 🏆 With three thrilling categories:</h3>
                 </div>
             </div>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-robot fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="service-heading">(A) AI vs. AI</h4>
-                    <p class="text-muted">Participants develop AI-driven agents to compete in digital pickleball matches. Teams design and train machine learning models, reinforcement learning agents, or rule-based algorithms to strategize, predict movements, and outperform opposing AIs in a fully simulated environment. This challenges students to push the limits of AI strategy, optimization, and real-time decision-making.</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4 class="service-heading">(A) AI vs. AI</h4>
+                        <p class="text-muted">Participants develop AI-driven agents to compete in digital pickleball matches. Teams design and train machine learning models, reinforcement learning agents, or rule-based algorithms to strategize, predict movements, and outperform opposing AIs in a fully simulated environment. This challenges students to push the limits of AI strategy, optimization, and real-time decision-making.</p>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-user fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="service-heading">(B) HCI vs. HCI</h4>
-                    <p class="text-muted">This category focuses on Human-Computer Interaction (HCI) by using motion tracking, pose estimation, and biomechanics to control gameplay. Competitors develop systems that analyze human body movements captured via camera-based pose estimation or motion sensors to interact with the game. The goal is to create the most accurate, responsive, and intuitive pickleball-playing system.</p>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h4 class="service-heading">(B) HCI vs. HCI</h4>
+                        <p class="text-muted">This category focuses on Human-Computer Interaction (HCI) by using motion tracking, pose estimation, and biomechanics to control gameplay. Competitors develop systems that analyze human body movements captured via camera-based pose estimation or motion sensors to interact with the game. The goal is to create the most accurate, responsive, and intuitive pickleball-playing system.</p>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-brain fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="service-heading">(C) BCI vs. BCI</h4>
-                    <p class="text-muted">The most futuristic category, Brain-Computer Interface (BCI), challenges students to control the game using neural signals (EEG). Competitors design brain-controlled interfaces that translate thoughts or mental commands into in-game actions. This pushes the boundaries of neuroscience, AI, and real-time signal processing, creating an innovative space where mindpower meets competition.</p>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 class="service-heading">(C) BCI vs. BCI</h4>
+                        <p class="text-muted">The most futuristic category, Brain-Computer Interface (BCI), challenges students to control the game using neural signals (EEG). Competitors design brain-controlled interfaces that translate thoughts or mental commands into in-game actions. This pushes the boundaries of neuroscience, AI, and real-time signal processing, creating an innovative space where mindpower meets competition.</p>
+                    </div>
                 </div>
             </div>
 
-            <br><br>
-            <div class="col-md-12 col-sm-12">
-                  
-                <img src="img/DPT.png" class="img-responsive img-centered" style="width: 80%; display: block; margin: 0 auto;" alt="">
+            <!--<div class="row mt-5">
+                <div class="col-md-12">
+                    <img src="img/DPT.png" class="img-fluid rounded mx-auto d-block" style="max-width: 80%;" alt="Digital Pickleball Tournament">
+                </div>
+            </div>-->
 
-                    
+            <!-- Enhanced Advertisement Image -->
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <div class="advertisement-image">
+                        <img src="img/DPT.png" class="img-fluid rounded mx-auto d-block" style="max-width: 600px;" alt="Digital Pickleball Tournament">
+                    </div>
+                    <div class="advertisement-overlay">
+                        <div class="text-center">
+                            <div class="service-heading text-center">
+                                <h3>Discover the Future of Digital Sports</h3>
+                            </div>
+                            <div class="text-muted text-center">
+                                <p>Compete in AI, HCI, and BCI-driven pickleball matches for glory and prizes. Join dPickleball today!</p>
+                            </div>
+                            <a href="#about" class="btn btn-primary btn-lg">What's this?</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+
     </section>
 
-    
-
-    <!-- About Section -->
+    <!-- Timeline Section -->
     <section id="timeline" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Timeline</h2>
-                    <!-- <h3 class="section-subheading text-muted">Insightful Talks by Our Speakers, from Sept 2024, in physical, online, or hybrid modes.</h3> -->
                 </div>
             </div>
+            
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="timeline">
-                        
-                        <!-- <li >
+                        <li>
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/DrSimon.jpg" alt="">
+                                <i class="fas fa-rocket fa-2x"></i>
                             </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>22 Oct 2024</h4>
-                                    <h4 class="subheading">Dr. Simon Liu, Lazada (Singapore)</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    
-                                    <h5 class="subheading">Title: Introduction to AI and its History</h5>
-                                    <p class="text-muted">Venue: Xiamen University Malaysia</p>
-                                   
-                                </div>
-                            </div>
-                        </li> -->
-
-
-
-                        <li >
-                            <div class="timeline-image" style="display: flex; align-items: center; justify-content: center; border-radius: 50%; background-color: #222;">
-                                <span class="fa-stack" style="font-size: 2.5em;">
-                                    <i class="fa fa-rocket fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </div>
-
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>1 August 2025</h4>
                                     <h4 class="subheading">Registration Opens</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <!-- <p class="text-muted">Title: Innovation in Epilepsy</p> -->
                                     <h5 class="subheading">with Briefing Session and Demo</h5>
-                                    <p class="text-muted">TBD</p>
-                                    
+                                    <p class="text-muted">Join us for a comprehensive introduction to the competition, including detailed explanations of each category, technical requirements, and live demonstrations of the digital pickleball platform.</p>
                                 </div>
                             </div>
                         </li>
-
-
-
-
+                        
                         <li class="timeline-inverted">
-                            <div class="timeline-image" style="display: flex; align-items: center; justify-content: center; border-radius: 50%; background-color: #222;">
-                                <span class="fa-stack" style="font-size: 2.5em;">
-                                    <i class="fa fa-rocket fa-stack-1x fa-inverse"></i>
-                                </span>
+                            <div class="timeline-image">
+                                <i class="fas fa-calendar-check fa-2x"></i>
                             </div>
-
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>15 September 2025</h4>
                                     <h4 class="subheading">Registration Ends</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <!-- <p class="text-muted">Title: Innovation in Epilepsy</p> -->
                                     <h5 class="subheading">The Start of Qualification Stage</h5>
-                                    <p class="text-muted">TBD</p>
-                                    
+                                    <p class="text-muted">All registered teams will begin the qualification process, submitting their initial systems for review and preliminary testing in their respective categories.</p>
                                 </div>
                             </div>
                         </li>
-
-                        <li >
-                            <div class="timeline-image" style="display: flex; align-items: center; justify-content: center; border-radius: 50%; background-color: #222;">
-                                <span class="fa-stack" style="font-size: 2.5em;">
-                                    <i class="fa fa-rocket fa-stack-1x fa-inverse"></i>
-                                </span>
+                        
+                        <li>
+                            <div class="timeline-image">
+                                <i class="fas fa-trophy fa-2x"></i>
                             </div>
-
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>1 October 2025</h4>
                                     <h4 class="subheading">Competition</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <!-- <p class="text-muted">Title: Innovation in Epilepsy</p> -->
                                     <h5 class="subheading">at Xiamen University Malaysia</h5>
-                                    <p class="text-muted">TBD</p>
-                                    
+                                    <p class="text-muted">The main event where qualified teams will compete in a tournament-style format. Witness cutting-edge AI, HCI, and BCI technologies in action as teams battle for the championship.</p>
                                 </div>
                             </div>
                         </li>
-
-                        
                         
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <h4>Be Part
-                                    <br>Of Our
-                                    <br>Story!</h4>
+                                <h4>Be Part<br>Of Our<br>Story!</h4>
                             </div>
                         </li>
                     </ul>
@@ -273,319 +689,393 @@
         </div>
     </section>
 
-    <!-- Team Section -->
-    <<!-- section id="team" class="bg-light-gray">
-        <div class="container"> -->
-            <!-- <div class="row"> -->
-                <!-- <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">XMUM AI Club</h3> 
-                </div> -->
-            <!-- </div>
-            <div class="row"> -->
-                <!-- <div class="col-sm-12">
-                    <div class="team-member">
-                        <img src="" class="img-responsive img-circle" alt="">
-                        <h4>XMUM AI Club</h4>
-                        <p class="text-muted">Machine Intelligence & Data Science</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div> -->
-                <!-- <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="img/team/2.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Larry Parker</h4>
-                        <p class="text-muted">Lead Marketer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Diana Pertersen</h4>
-                        <p class="text-muted">Lead Developer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div> -->
-            <!-- </div> -->
-            <!-- <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-                </div>
-            </div> -->
-        <!-- </div>
-    </section> -->
-
-    </section>
-    <section id="rule" >
-    <div class="container">
-        <div class="row">
+    <!-- Placeholder sections for Rules, Committees, and Sponsors -->
+    <section id="rule" class="py-5">
+        <div class="container">
+            <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Rules</h2>
-                    <h3 class="section-subheading text-muted">TBA</h3>
+                    <h3 class="section-subheading text-muted">Competition guidelines and requirements for all categories</h3>
+                    <h5>(T.B.A.)</h5>
                 </div>
+            </div>
+            <!-- Rules content would go here -->
         </div>
-
-       
-
-    </div>
     </section>
 
-    <!-- Portfolio Grid Section -->
-    <section id="committee" class="bg-light-gray">
-    <div class="container">
-        
-
-
-
-        <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Student Committees</h2>
-                    <h3 class="section-subheading text-muted">Co-organize with Enthusiasm &amp; Heart :</h3>
-                </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 portfolio-item text-center">
-                <a href="files/startup-framework.pdf" class="portfolio-link" download>
-                    <!-- No hover animation -->
-                    <!-- <div>
-                        <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
-                    </div> -->
-                </a>
-                <div class="portfolio-caption">
-                    <h4>Isaac</h4>
-                    <p class="text-muted">Xiamen University Malaysia</p>
-                </div>
-            </div>
-        </div>
-
-        <br><br><br><br>
-
-
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Committees</h2>
-                <h3 class="section-subheading text-muted">Co-organize with Enthusiasm &amp; Heart :</h3>
-            </div>
-        </div>
-
-        <!-- Portfolio Item 1 -->
-        <div class="row">
-            <div class="col-md-12 portfolio-item text-center">
-                
-                    <!-- No hover animation -->
-                    <!-- <div>
-                        
-                        <img src="img/portfolio/roundicons.png" class="img-responsive" alt="">
-                    
-                    </div> -->
-                
-                <div class="portfolio-caption">
-                    <!-- <a href="files/lazada.pdf" class="portfolio-link" download> -->
-                    <h4>Goh Sim Kuan</h4>
-                    <p class="text-muted">Xiamen University Malaysia</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Portfolio Item 2 -->
-        <div class="row">
-            <div class="col-md-12 portfolio-item text-center">
-                <a href="files/startup-framework.pdf" class="portfolio-link" download>
-                    <!-- No hover animation -->
-                    <!-- <div>
-                        <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
-                    </div> -->
-                </a>
-                <div class="portfolio-caption">
-                    <h4>Toa Chean Khim</h4>
-                    <p class="text-muted">Xiamen University Malaysia</p>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Portfolio Item 2 -->
-        <div class="row">
-            <div class="col-md-12 portfolio-item text-center">
-                <a href="files/startup-framework.pdf" class="portfolio-link" download>
-                    <!-- No hover animation -->
-                    <!-- <div>
-                        <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
-                    </div> -->
-                </a>
-                <div class="portfolio-caption">
-                    <h4>Yap Shook Chin</h4>
-                    <p class="text-muted">Xiamen University Malaysia</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 portfolio-item text-center">
-                <a href="files/startup-framework.pdf" class="portfolio-link" download>
-                    <!-- No hover animation -->
-                    <!-- <div>
-                        <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
-                    </div> -->
-                </a>
-                <div class="portfolio-caption">
-                    <h4>FOO Chuan Yi (Braedan)</h4>
-                    <p class="text-muted">Xiamen University Malaysia</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 portfolio-item text-center">
-                <a href="files/startup-framework.pdf" class="portfolio-link" download>
-                    <!-- No hover animation -->
-                    <!-- <div>
-                        <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
-                    </div> -->
-                </a>
-                <div class="portfolio-caption">
-                    <h4>Chan Choon Kit</h4>
-                    <p class="text-muted">INTI International University</p>
-                </div>
-            </div>
-        </div>
-
-        
-
-        <!-- Portfolio Item 2 -->
-        <div class="row">
-            <div class="col-md-12 portfolio-item text-center">
-                <a href="files/startup-framework.pdf" class="portfolio-link" download>
-                    <!-- No hover animation -->
-                    <!-- <div>
-                        <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
-                    </div> -->
-                </a>
-                <div class="portfolio-caption">
-                    <h4>Chan Chow Khuen</h4>
-                    <p class="text-muted">Universiti Malaya</p>
-                </div>
-            </div>
-        </div>
-    
-
-        
-
-        <!-- <br><br><br><br> -->
-    </div>
-    </section>
-    <section id="sponsor" >
-    <div class="container">
-        <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Collaborators &amp; Sponsors</h2>
-                    <h3 class="section-subheading text-muted">Collaborate &amp; Support with Enthusiasm &amp; Heart :</h3>
-                </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 portfolio-item text-center">
-                <a href="files/startup-framework.pdf" class="portfolio-link" download>
-                    <!-- No hover animation -->
-                    <!-- <div>
-                        <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
-                    </div> -->
-                </a>
-                <!-- <div class="portfolio-caption">
-                    <h4>Innovation and Entrepreneurship Centre</h4>
-                    <h4>Research and Postgraduate Centre</h4>
-                    <p class="text-muted">Xiamen University Malaysia</p>
-                    <br>
-                </div> -->
-                <div class="portfolio-caption">
-                    <h4>XMUM Makerspace &amp; AI Club (MINDS)</h4>
-                    <p class="text-muted">Xiamen University Malaysia</p>
-                    <br>
-                </div>
-
-
-            </div>
-        </div>
-
-    </div>
-    </section>
-
-
-    
-
-    <footer>
-        <div class="container" class="bg-light-gray">
+    <!-- Committees Section -->
+    <section id="committee" class="py-5 bg-light-gray">
+        <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <span class="copyright">Co-organized by XMUM Makerspace &amp; AI Club (MINDS). </span>
-                    <!-- <span class="copyright">Contact us for collaboration.</span> -->
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Committees</h2>
+                    <h3 class="section-subheading text-muted">Co-organize with Enthusiasm & Heart</h3>
                 </div>
-                <div class="col-md-4">
+            </div>
+            
+            <!-- Student Committees -->
+            <div class="row mb-5">
+                <div class="col-lg-12">
+                    <h3 class="text-center mb-4">Student Committees</h3>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="committee-card">
+                        <div class="committee-img-container">
+                            <div class="committee-img-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="committee-info">
+                            <h4>ISAAC</h4>
+                            <!--<p class="committee-title">Tournament Chair</p>-->
+                            <p class="text-muted">Xiamen University Malaysia</p>
+                        </div>
+                    </div>
+                </div>
+                
+            <!-- Committee -->
+            <div class="row mb-5">
+                <div class="col-lg-12">
+                    <h3 class="text-center mb-4">Committees</h3>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="committee-card">
+                        <div class="committee-img-container">
+                            <div class="committee-img-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="committee-info">
+                            <h4>Goh Sim Kuan</h4>
+                            <!--<p class="committee-title">AI Category Lead</p>-->
+                            <p class="text-muted">Xiamen University Malaysia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="committee-card">
+                        <div class="committee-img-container">
+                            <div class="committee-img-placeholder">
+                                <i class="fas fa-user-cog"></i>
+                            </div>
+                        </div>
+                        <div class="committee-info">
+                            <h4>Toa Chean Khim</h4>
+                            <p class="text-muted">Xiamen University Malaysia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="committee-card">
+                        <div class="committee-img-container">
+                            <div class="committee-img-placeholder">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                        </div>
+                        <div class="committee-info">
+                            <h4>Yap Shook Chin</h4>
+                            <p class="text-muted">Xiamen University Malaysia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Advisory Committee -->
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="committee-card">
+                        <div class="committee-img-container">
+                            <div class="committee-img-placeholder">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                        </div>
+                        <div class="committee-info">
+                            <h4>FOO Chuan Yi (Braedan)</h4>
+                            <p class="text-muted">Xiamen University Malaysia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="committee-card">
+                        <div class="committee-img-container">
+                            <div class="committee-img-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="committee-info">
+                            <h4>Chan Choon Kit</h4>
+                            <p class="text-muted">INTI International University</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="committee-card">
+                        <div class="committee-img-container">
+                            <div class="committee-img-placeholder">
+                                <i class="fas fa-user-cog"></i>
+                            </div>
+                        </div>
+                        <div class="committee-info">
+                            <h4>Chan Chow Khuen</h4>
+                            <p class="text-muted">Universiti Malaya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Sponsors Section -->
+    <section id="sponsor" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Collaborators & Sponsors</h2>
+                    <h3 class="section-subheading text-muted">Collaborate & Support with Enthusiasm & Heart</h3>
+                </div>
+            </div>
+            
+            <!-- Platinum Sponsors -->
+            <div class="row mb-5">
+                <div class="col-lg-12">
+                    <h3 class="text-center mb-4">Gold Sponsors</h3>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-building"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h4>XMUM Makerspace & AI Club (MINDS)</h4>
+                            <p class="text-muted">Xiamen University Malaysia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gold Sponsors -->
+            <!--<div class="row mb-5">
+                <div class="col-lg-12">
+                    <h3 class="text-center mb-4">Gold Sponsors</h3>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>CodeMasters Inc.</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>BrainTech Solutions</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-vr-cardboard"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>VRSports Malaysia</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>DataFlow Systems</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            
+            <!-- Academic Partners -->
+            <div class="row mb-5">
+                <div class="col-lg-12">
+                    <h3 class="text-center mb-4">Academic Partners</h3>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>Xiamen University Malaysia</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>University of Malaya</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>INTI International University</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Media Partners -->
+            <!--<div class="row">
+                <div class="col-lg-12">
+                    <h3 class="text-center mb-4">Media Partners</h3>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card media">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>Tech Malaysia Today</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card media">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-tv"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>Digital Sports Network</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card media">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>AI Frontiers Podcast</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card media">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-rss"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>Innovation Malaysia Blog</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="copyright">Copyright &copy; dPickleball 2025</span>
+                </div>
+                <div class="col-md-6">
                     <ul class="list-inline social-buttons">
-                        <li><a href="https://www.instagram.com/xmum_ai_club?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa fa-instagram"></i></a>
-                        </li>
-                        <!-- <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li> -->
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Terms of Use</a>
-                        </li>
+                        <!--<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>-->
+                        <li class="list-inline-item"><a href="https://www.instagram.com/xmum_ai_club?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Bootstrap & jQuery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
     
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/cbpAnimatedHeader.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/agency.js"></script>
-
+    <!-- Custom JavaScript -->
+    <script>
+        // Navbar scroll behavior
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > 100) {
+                $('.navbar').addClass('navbar-shrink');
+            } else {
+                $('.navbar').removeClass('navbar-shrink');
+            }
+        });
+        
+        // Smooth scrolling for page anchors
+        $(document).on('click', 'a.page-scroll', function(event) {
+            event.preventDefault();
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top - 70
+            }, 800);
+        });
+        
+        // Close responsive menu when a scroll trigger link is clicked
+        $('.nav-link').click(function() {
+            $('.navbar-collapse').collapse('hide');
+        });
+    </script>
 </body>
-
 </html>
