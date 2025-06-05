@@ -112,16 +112,44 @@
         
         /* Header/Hero Section */
         header {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('img/header-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            color: var(--light);
-            position: relative;
-        }
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: var(--light);
+    overflow: hidden;
+}
+
+/* Background GIF layer */
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/DPG.gif') center center / cover no-repeat;
+    z-index: 0;
+}
+
+/* Dark overlay gradient */
+header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+    z-index: 1;
+}
+
+/* Foreground content */
+header .container,
+header .intro-text {
+    position: relative;
+    z-index: 2;
+}
         
         .intro-text {
             text-align: center;
@@ -836,8 +864,34 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4 mb-4">
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-building"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h4>AI Company (TBA)</h4>
+                            <p class="text-muted">Malaysia</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-12">
                     <h3 class="text-center mb-4">Silve Sponsors</h3>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-building"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h4>AI Company (TBA)</h4>
+                            <p class="text-muted">Malaysia</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="sponsor-card gold">
@@ -895,6 +949,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4 mb-4">
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-building"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h4>AI Company (TBA)</h4>
+                            <p class="text-muted">Malaysia</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -915,6 +982,45 @@
                 </div> -->
                 
 
+
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>Xiamen University Malaysia</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>Xiamen University Malaysia</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>Xiamen University Malaysia</h5>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-md-3 mb-4">
                     <div class="sponsor-card academic">
